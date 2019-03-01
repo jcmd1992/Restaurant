@@ -21,6 +21,7 @@ public class Add extends Base {
     private double 		Price, ratingValue;
     private EditText name, cuisine, price;
     private RatingBar ratingBar;
+    //variables
 
 
     @Override
