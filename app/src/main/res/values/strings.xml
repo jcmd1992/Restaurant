@@ -1,0 +1,32 @@
+<resources>
+    <string name="app_name">RestaurantApp</string>
+    <string name="appHelp">This is the help screen for Restaurant</string>
+    <string name="appHelpExtra">Basically\, if you want to use everything this app has to offer, you probably should go to a restaurant</string>
+    <string name="appDisplayName">Restaurant</string>
+    <string name="appDesc">Restaurant provides the user with a quick and easy way to manage a list of Restaurants and your favourite Restaurants.</string>
+    <string name="appMoreInfo">For more information about Restaurant or to provide feedback please visit our website.</string>
+    <string name="appAbout">About Restaurant</string>
+    <string name="appWebsite">IrishRestaurants.ie</string>
+    <string name="developer">Developed by Jack Dolan</string>
+
+    <string name="searchRestaurantsLbl">Search Restaurant\'s</string>
+    <string name="favouritesRestaurantLbl">Favourite Restaurant\'s</string>
+    <string name="addARestaurantLbl">Restaurant Check In</string>
+    <string name="addRestaurantBtnLbl">Add Restaurant</string>
+    <string name="saveRestaurantBtn">Save Restaurant</string>
+    <string name="recentlyViewedLbl">Recently Added Restaurant\'s</string>
+    <string name="RestaurantNameLbl">Name :</string>
+    <string name="RestaurantCuisineLbl">Cuisine :</string>
+    <string name="RestaurantPriceLbl">Price :</string>
+    <string name="RestaurantRatingLbl">Star Rating</string>
+    <string name="RestaurantDetailsLbl">Full Restaurant Details</string>
+    <string name="informationLbl">Information</string>
+    <string name="emptyMessageLbl">You have no Restaurant\'s added, go to a Restaurant!</string>
+    <string name="deleteRestaurantsLbl">Delete Restaurants</string>
+
+    <string-array name="RestaurantTypes">
+        <item>All Types</item>
+        <item>Favourites</item>
+        <item>\> 3\* Rating</item>
+    </string-array>
+</resources>
