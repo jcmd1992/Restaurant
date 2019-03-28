@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activities.Add">
+    tools:context=".activities.MealAdd">
 
     <TextView
         android:id="@+id/addfooter"
@@ -24,9 +24,8 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.0" />
 
-
     <TextView
-        android:id="@+id/addCuisineTV"
+        android:id="@+id/addPriceTV"
         android:layout_width="99dp"
         android:layout_height="43dp"
         android:layout_marginBottom="8dp"
@@ -34,29 +33,31 @@
         android:layout_marginStart="36dp"
         android:layout_marginTop="8dp"
         android:paddingTop="10dp"
-        android:text="@string/RestaurantCuisineLbl"
+        android:text="@string/MealPriceLbl"
         android:textAlignment="textEnd"
         android:textColor="@color/colorFontBlack"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/addCuisineET"
+        app:layout_constraintEnd_toStartOf="@+id/editPriceET"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.157" />
+        app:layout_constraintVertical_bias="0.285" />
+
 
     <TextView
         android:id="@+id/addNameTV"
         android:layout_width="99dp"
         android:layout_height="43dp"
-        android:layout_marginEnd="8dp"
         android:layout_marginStart="36dp"
+        android:layout_marginTop="112dp"
+        android:layout_marginEnd="8dp"
         android:paddingTop="10dp"
-        android:text="@string/RestaurantNameLbl"
+        android:text="@string/MealNameLbl"
         android:textAlignment="textEnd"
         android:textColor="@color/colorFontBlack"
         android:textSize="18sp"
-        app:layout_constraintBottom_toTopOf="@+id/addCuisineTV"
+        app:layout_constraintBottom_toTopOf="@+id/addNameET"
         app:layout_constraintEnd_toStartOf="@+id/addNameET"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -67,34 +68,34 @@
         android:id="@+id/addNameET"
         android:layout_width="189dp"
         android:layout_height="44dp"
-        android:layout_marginEnd="40dp"
         android:layout_marginStart="8dp"
+        android:layout_marginEnd="40dp"
         android:ems="10"
-        android:hint="Enter Restaurant Name"
+        android:hint="@string/MealNameLbl"
         android:inputType="textPersonName"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.447"
-        app:layout_constraintStart_toEndOf="@+id/editNameTV"
+        app:layout_constraintStart_toEndOf="@+id/addNameTV"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.053" />
-
+        app:layout_constraintVertical_bias="0.163" />
 
     <EditText
-        android:id="@+id/addCuisineET"
-        android:layout_width="189dp"
-        android:layout_height="45dp"
-        android:layout_marginEnd="40dp"
+        android:id="@+id/editPriceET"
+        android:layout_width="131dp"
+        android:layout_height="42dp"
+        android:layout_marginEnd="100dp"
         android:layout_marginStart="8dp"
         android:ems="10"
-        android:hint="Enter Cuisine"
-        android:inputType="textPersonName"
+        android:hint="@string/MealPriceLbl"
+        android:inputType="numberDecimal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintHorizontal_bias="0.447"
+        app:layout_constraintStart_toEndOf="@+id/addPriceTV"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.169" />
+        app:layout_constraintVertical_bias="0.292" />
+
 
     <RatingBar
         android:id="@+id/addRatingBar"
@@ -103,22 +104,22 @@
         android:layout_marginTop="48dp"
         android:rating="1"
         android:stepSize="0.5"
-        app:layout_constraintBottom_toTopOf="@+id/editfooter"
+        app:layout_constraintBottom_toTopOf="@+id/addfooter"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/addCuisineET"
+        app:layout_constraintTop_toBottomOf="@+id/editPriceET"
         app:layout_constraintVertical_bias="0.213" />
 
     <Button
-        android:id="@+id/addRestaurantBtn"
+        android:id="@+id/addMealBtn"
         android:layout_width="90dp"
         android:layout_height="84dp"
         android:layout_marginTop="68dp"
         android:background="@color/colorFontOffWhite"
         android:drawableTop="@drawable/ic_add_circle_outline_black_24dp"
-        android:onClick="addRestaurant"
+        android:onClick="addMeal"
         android:text="@string/addRestaurantBtnLbl"
-        app:layout_constraintBottom_toTopOf="@+id/editfooter"
+        app:layout_constraintBottom_toTopOf="@+id/addfooter"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintStart_toStartOf="parent"

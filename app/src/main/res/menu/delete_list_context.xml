@@ -6,4 +6,9 @@
         android:icon="@android:drawable/ic_menu_delete"
         android:title="@string/deleteRestaurantsLbl"
         app:showAsAction="ifRoom" />
+    <item
+    android:id="@+id/menu_item_delete_meal"
+    android:icon="@android:drawable/ic_menu_delete"
+    android:title="@string/deleteMealsLbl"
+    app:showAsAction="ifRoom" />
 </menu>

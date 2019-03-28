@@ -11,19 +11,28 @@
 
     <string name="searchRestaurantsLbl">Search Restaurant\'s</string>
     <string name="favouritesRestaurantLbl">Favourite Restaurant\'s</string>
-    <string name="addARestaurantLbl">Restaurant Check In</string>
+    <string name="addARestaurantLbl">Restaurant Adding</string>
     <string name="addRestaurantBtnLbl">Add Restaurant</string>
     <string name="saveRestaurantBtn">Save Restaurant</string>
     <string name="recentlyViewedLbl">Recently Added Restaurant\'s</string>
     <string name="RestaurantNameLbl">Name :</string>
     <string name="RestaurantCuisineLbl">Cuisine :</string>
-    <string name="RestaurantPriceLbl">Price :</string>
+    <string name="MealPriceLbl">Price :</string>
     <string name="RestaurantRatingLbl">Star Rating</string>
     <string name="RestaurantDetailsLbl">Full Restaurant Details</string>
     <string name="informationLbl">Information</string>
     <string name="emptyMessageLbl">You have no Restaurant\'s added, go to a Restaurant!</string>
     <string name="deleteRestaurantsLbl">Delete Restaurants</string>
 
+    <string name="searchMealsLbl2">Search Meal\'s</string>
+    <string name="favouritesMealLbl2">Favourite Meal\'s</string>
+    <string name="addAMealLbl">Meal Order</string>
+    <string name="addMealBtnLbl">Add Meal</string>
+    <string name="saveMealBtn">Save Meal</string>
+    <string name="recentlyViewedLbl2">Recently Added Meal\'s</string>
+    <string name="MealNameLbl">Name :</string>
+    <string name="deleteMealsLbl">Delete Meals</string>
+    <string name="emptyMessageLbl2">You have no Meal\'s added, go have a Meal!</string>
     <string-array name="RestaurantTypes">
         <item>All Types</item>
         <item>Favourites</item>

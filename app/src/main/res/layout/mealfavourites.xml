@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activities.Favourites">
+    tools:context=".activities.MealFavourites">
 
     <TextView
         android:id="@+id/favouriteBarTV"
@@ -14,7 +14,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="108dp"
         android:background="@color/colorPrimary"
-        android:text="@string/recentlyViewedLbl"
+        android:text="@string/recentlyViewedLbl2"
         android:textAlignment="center"
         android:textColor="@color/colorFontWhite"
         android:textSize="16sp"
@@ -55,19 +55,19 @@
             android:layout_height="wrap_content"
             android:layout_gravity="top|center_horizontal"
             android:layout_marginTop="30dp"
-            android:text="@string/emptyMessageLbl"
+            android:text="@string/emptyMessageLbl2"
             android:textSize="12sp"
             app:layout_constraintHorizontal_bias="0.576"
             app:layout_constraintVertical_bias="0.533" />
     </FrameLayout>
 
     <TextView
-        android:id="@+id/favouriteRestaurantName"
+        android:id="@+id/favouriteMealName"
         android:layout_width="174dp"
         android:layout_height="40dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:text="RestaurantName"
+        android:text="MealName"
         android:textAlignment="center"
         android:textColor="@color/colorFontBlack"
         android:textSize="30sp"
@@ -75,22 +75,22 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+
     <TextView
-        android:id="@+id/favouriteRestaurantCuisine"
+        android:id="@+id/favouriteMealPrice"
         android:layout_width="94dp"
         android:layout_height="25dp"
-        android:layout_marginStart="48dp"
+        android:layout_marginEnd="52dp"
         android:layout_marginTop="20dp"
-        android:text="Cusine"
+        android:text="price"
         android:textAlignment="center"
         android:textColor="@color/colorPrimaryDark"
         android:textSize="18sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/favouriteRestaurantName" />
-
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/favouriteMealRating" />
 
     <TextView
-        android:id="@+id/favouriteRestaurantRating"
+        android:id="@+id/favouriteMealRating"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="56dp"
