@@ -1,11 +1,12 @@
 package ie.JD.models;
 
-
+import com.google.firebase.database.IgnoreExtraProperties;
 import java.io.Serializable;
 import java.util.UUID;
 
 
 
+@IgnoreExtraProperties
 public class Restaurant implements Serializable
 {
 	public String restaurantId;
@@ -24,6 +25,9 @@ public class Restaurant implements Serializable
 		this.cuisine = cuisine;
 		this.rating = rating;
 		this.favourite = fav;
+	}
+
+	public static void Restaurant(Restaurant restaurant) {
 	}
 
 	@Override

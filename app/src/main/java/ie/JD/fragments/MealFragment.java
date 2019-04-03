@@ -17,14 +17,17 @@ import android.widget.AbsListView;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 import java.util.ArrayList;
 import java.util.Random;
 
 import ie.JD.R;
 import ie.JD.activities.Base;
 import ie.JD.activities.MealEdit;
-import ie.JD.activities.Favourites;
 
+import ie.JD.activities.MealFavourites;
 import ie.JD.adapters.MealFilter;
 import ie.JD.adapters.MealListAdapter;
 import ie.JD.models.Meal;
@@ -73,7 +76,7 @@ public class MealFragment extends ListFragment implements View.OnClickListener,
         listAdapter = new MealListAdapter(activity, this, activity.app.mealList);
         mealFilter = new MealFilter(activity.app.mealList,"all",listAdapter);
 
-        if (getActivity() instanceof Favourites) {
+        if (getActivity() instanceof MealFavourites) {
             mealFilter.setFilter("favourites"); // Set the filter text field from 'all' to 'favourites'
             mealFilter.filter(null); // Filter the data, but don't use any prefix
             listAdapter.notifyDataSetChanged(); // Update the adapter
@@ -115,7 +118,9 @@ public class MealFragment extends ListFragment implements View.OnClickListener,
         AlertDialog.Builder builder = new AlertDialog.Builder(activity);
         builder.setMessage("Are you sure you want to Delete the \'meal\' " + stringName + "?");
         builder.setCancelable(false);
-
+        DatabaseReference ToDelete = FirebaseDatabase.getInstance().getReference().child("Meal");
+        DatabaseReference mealToDelete = ToDelete.child(meal.mealId);
+        mealToDelete.removeValue();
         builder.setPositiveButton("Yes", new DialogInterface.OnClickListener()
         {
             public void onClick(DialogInterface dialog, int id)
@@ -171,7 +176,7 @@ public class MealFragment extends ListFragment implements View.OnClickListener,
             if (listView.isItemChecked(i))
             {
                 activity.app.mealList.remove(listAdapter.getItem(i));
-                if (activity instanceof Favourites)
+                if (activity instanceof MealFavourites)
                     listAdapter.mealList.remove(listAdapter.getItem(i));
             }
         }
@@ -190,7 +195,7 @@ public class MealFragment extends ListFragment implements View.OnClickListener,
             if (c.favourite)
                 mealList.add(c);
 
-        if (activity instanceof Favourites)
+        if (activity instanceof MealFavourites)
             if( !mealList.isEmpty()) {
                 Meal randomMeal = mealList.get(new Random()
                         .nextInt(mealList.size()));

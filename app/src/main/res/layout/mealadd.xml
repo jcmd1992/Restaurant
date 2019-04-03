@@ -118,7 +118,7 @@
         android:background="@color/colorFontOffWhite"
         android:drawableTop="@drawable/ic_add_circle_outline_black_24dp"
         android:onClick="addMeal"
-        android:text="@string/addRestaurantBtnLbl"
+        android:text="@string/addMealBtnLbl"
         app:layout_constraintBottom_toTopOf="@+id/addfooter"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.501"

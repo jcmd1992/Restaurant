@@ -18,9 +18,10 @@
         android:text="@string/searchRestaurantsLbl"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.879"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.033" />
+        app:layout_constraintVertical_bias="0.032" />
 
     <Button
         android:id="@+id/addBtn"
@@ -33,21 +34,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.094"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.033" />
-
-    <Button
-        android:id="@+id/favouritesBtn"
-        android:layout_width="105dp"
-        android:layout_height="119dp"
-        android:background="@color/colorFontOffWhite"
-        android:drawableTop="@drawable/ic_thumb_up_black_24dp"
-        android:onClick="favourites"
-        android:text="@string/favouritesRestaurantLbl"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.915"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.033" />

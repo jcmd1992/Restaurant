@@ -7,6 +7,10 @@ import android.widget.EditText;
 import android.widget.RatingBar;
 import android.widget.Toast;
 
+import com.google.firebase.FirebaseApp;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 import ie.JD.R;
 import ie.JD.models.Restaurant;
 
@@ -17,7 +21,8 @@ public class Add extends Base {
     private EditText name, cuisine;
     private RatingBar ratingBar;
     //variables
-
+    DatabaseReference myDatabase;
+    Restaurant restaurant;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -26,6 +31,11 @@ public class Add extends Base {
         name = findViewById(R.id.addNameET);
         cuisine =  findViewById(R.id.addCuisineET);
         ratingBar =  findViewById(R.id.addRatingBar);
+
+        FirebaseApp.initializeApp(this);
+
+        //getting the reference of issue node
+        myDatabase = FirebaseDatabase.getInstance().getReference("Restaurant");
 
     }
 
@@ -38,11 +48,13 @@ public class Add extends Base {
 
         if ((restaurantName.length() > 0) && (Cuisine.length() > 0))
                 {
+
             Restaurant c = new Restaurant(restaurantName, Cuisine, ratingValue,
                      false);
 
-
+                    myDatabase.child(c.restaurantId).setValue(c);
             app.restaurantList.add(c);
+
             startActivity(new Intent(this, Home.class));
         } else
             Toast.makeText(

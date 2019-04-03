@@ -28,7 +28,6 @@
         <activity android:name="ie.JD.activities.MealSearch" />
         <activity android:name="ie.JD.activities.MealHelp" />
         <activity android:name="ie.JD.activities.MealFavourites" />
-        <activity android:name="ie.JD.activities.Favourites" />
         <activity android:name="ie.JD.activities.Search" />
     </application>
 

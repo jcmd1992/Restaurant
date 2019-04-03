@@ -33,12 +33,6 @@ public class RestaurantItem {
 
         ((TextView) view.findViewById(R.id.rowRestaurantCuisine)).setText(restaurant.cuisine);
         ((TextView) view.findViewById(R.id.rowRating)).setText(restaurant.rating + " *");
-        ImageView imgIcon = view.findViewById(R.id.rowFavouriteImg);
-
-        if (restaurant.favourite == true)
-            imgIcon.setImageResource(R.drawable.ic_thumb_up_black_on);
-        else
-            imgIcon.setImageResource(R.drawable.ic_thumb_up_black_24dp);
 
 
     }

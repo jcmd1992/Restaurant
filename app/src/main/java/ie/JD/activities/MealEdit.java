@@ -10,14 +10,20 @@ import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.FirebaseApp;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 import ie.JD.R;
 import ie.JD.models.Meal;
+import ie.JD.models.Restaurant;
 
 public class MealEdit extends Base {
     public Context context;
     public boolean isFavourite;
     public Meal aMeal;
     public ImageView editFavourite;
+    DatabaseReference myDatabase;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -26,6 +32,10 @@ public class MealEdit extends Base {
         context = this;
         activityInfo = getIntent().getExtras();
         aMeal = getMealObject(activityInfo.getString("mealId"));
+        FirebaseApp.initializeApp(this);
+
+        //getting the reference of issue node
+        myDatabase = FirebaseDatabase.getInstance().getReference("Meal");
 
         ((TextView)findViewById(R.id.editTitleTV)).setText(aMeal.mealName);
 
@@ -71,6 +81,9 @@ public class MealEdit extends Base {
             aMeal.price = mealPrice;
             aMeal.rating = ratingValue;
 
+
+            DatabaseReference dbEdit = FirebaseDatabase.getInstance().getReference("Meal").child(aMeal.mealId);
+            dbEdit.setValue(aMeal);
             startActivity(new Intent(this, MealHome.class));
 
         } else

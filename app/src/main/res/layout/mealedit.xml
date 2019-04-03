@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activities.MealHome">
+    tools:context=".activities.MealEdit">
 
     <TextView
         android:id="@+id/editBarTV"
@@ -81,7 +81,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:ems="10"
-        android:hint="Restaurant Name"
+        android:hint="Meal Name"
         android:inputType="textPersonName"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -129,7 +129,7 @@
         android:background="@color/colorFontOffWhite"
         android:drawableTop="@drawable/ic_add_circle_outline_black_24dp"
         android:onClick="saveMeal"
-        android:text="@string/saveRestaurantBtn"
+        android:text="@string/saveMealBtn"
         app:layout_constraintBottom_toTopOf="@+id/editfooter"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.501"

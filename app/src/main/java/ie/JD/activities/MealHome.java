@@ -2,7 +2,15 @@ package ie.JD.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.view.View;
+
+import com.google.firebase.FirebaseApp;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import ie.JD.R;
 
@@ -11,12 +19,30 @@ import ie.JD.models.Meal;
 
 
 public class MealHome extends Base {
-
+    DatabaseReference myDatabase;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.content_meal_home);
-        if(app.mealList.isEmpty()) setupMeals();
+        FirebaseApp.initializeApp(this);
+
+        myDatabase = FirebaseDatabase.getInstance().getReference("Meal");
+
+        myDatabase.addValueEventListener(new ValueEventListener() {  @Override
+        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+            app.mealList.clear();
+            for (DataSnapshot ds : dataSnapshot.getChildren()) {
+                Meal meallist = (ds.getValue(Meal.class));
+                //adding restaurant to the list
+                Meal.Meal(meallist);
+                app.mealList.add(meallist);
+
+            }
+        }
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+            }
+        });
     }
 
     public void addMeal(View v) { startActivity(new Intent(this, MealAdd.class)); }
@@ -35,11 +61,5 @@ public class MealHome extends Base {
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.fragment_container, myFragment)
                 .commit(); // add it to the current activity
-    }
-
-    public void setupMeals(){
-        app.mealList.add(new Meal("Kungpo",2.5,1.99,false));
-        app.mealList.add(new Meal("Beef in blackbean sauce",3.5,2.99,true));
-        app.mealList.add(new Meal("Dumplings", 4.5,1.49,true));
     }
 }

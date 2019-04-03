@@ -25,7 +25,8 @@ public class Meal implements Serializable
         this.price = price;
         this.favourite = fav;
     }
-
+    public static void Meal(Meal meal) {
+    }
     @Override
     public String toString() {
         return mealId + " " + mealName + ", " + ", " + rating

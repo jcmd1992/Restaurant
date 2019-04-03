@@ -17,13 +17,12 @@ import android.widget.AbsListView;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import java.util.ArrayList;
-import java.util.Random;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import ie.JD.R;
 import ie.JD.activities.Base;
 
-import ie.JD.activities.Favourites;
 import ie.JD.activities.MealHome;
 import ie.JD.adapters.RestaurantFilter;
 import ie.JD.adapters.RestaurantListAdapter;
@@ -71,14 +70,7 @@ public class RestaurantFragment extends ListFragment implements View.OnClickList
         super.onCreate(savedInstanceState);
         listAdapter = new RestaurantListAdapter(activity, this, activity.app.restaurantList);
         restaurantFilter = new RestaurantFilter(activity.app.restaurantList,"all",listAdapter);
-
-        if (getActivity() instanceof Favourites) {
-            restaurantFilter.setFilter("favourites"); // Set the filter text field from 'all' to 'favourites'
-            restaurantFilter.filter(null); // Filter the data, but don't use any prefix
-            listAdapter.notifyDataSetChanged(); // Update the adapter
-        }
         setListAdapter (listAdapter);
-        setRandomRestaurant();
         checkEmptyList();
     }
 
@@ -114,6 +106,9 @@ public class RestaurantFragment extends ListFragment implements View.OnClickList
         AlertDialog.Builder builder = new AlertDialog.Builder(activity);
         builder.setMessage("Are you sure you want to Delete the \'Restaurant\' " + stringName + "?");
         builder.setCancelable(false);
+        DatabaseReference ToDelete = FirebaseDatabase.getInstance().getReference().child("Restaurant");
+        DatabaseReference restaurantToDelete = ToDelete.child(restaurant.restaurantId);
+        restaurantToDelete.removeValue();
 
         builder.setPositiveButton("Yes", new DialogInterface.OnClickListener()
         {
@@ -121,7 +116,6 @@ public class RestaurantFragment extends ListFragment implements View.OnClickList
             {
                 activity.app.restaurantList.remove(restaurant); // remove from our list
                 listAdapter.restaurantList.remove(restaurant); // update adapters data
-                setRandomRestaurant();
                 listAdapter.notifyDataSetChanged(); // refresh adapter
                 checkEmptyList();
             }
@@ -165,45 +159,12 @@ public class RestaurantFragment extends ListFragment implements View.OnClickList
 
     public void deleteRestaurants(ActionMode actionMode)
     {
-        for (int i = listAdapter.getCount() -1 ; i >= 0; i--)
-        {
-            if (listView.isItemChecked(i))
-            {
-                activity.app.restaurantList.remove(listAdapter.getItem(i));
-                if (activity instanceof Favourites)
-                   listAdapter.restaurantList.remove(listAdapter.getItem(i));
-            }
-        }
-        setRandomRestaurant();
         listAdapter.notifyDataSetChanged(); // refresh adapter
         checkEmptyList();
 
         actionMode.finish();
     }
 
-    public void setRandomRestaurant() {
-
-        ArrayList<Restaurant> restaurantList = new ArrayList<>();
-
-        for(Restaurant c : activity.app.restaurantList)
-            if (c.favourite)
-                restaurantList.add(c);
-
-        if (activity instanceof Favourites)
-            if( !restaurantList.isEmpty()) {
-                Restaurant randomRestaurant = restaurantList.get(new Random()
-                            .nextInt(restaurantList.size()));
-
-                ((TextView) getActivity().findViewById(R.id.favouriteRestaurantName)).setText(randomRestaurant.restaurantName);
-                ((TextView) getActivity().findViewById(R.id.favouriteRestaurantCuisine)).setText(randomRestaurant.cuisine);
-                ((TextView) getActivity().findViewById(R.id.favouriteRestaurantRating)).setText(randomRestaurant.rating + " *");
-            }
-            else {
-                ((TextView) getActivity().findViewById(R.id.favouriteRestaurantName)).setText("N/A");
-                ((TextView) getActivity().findViewById(R.id.favouriteRestaurantCuisine)).setText("N/A");
-                ((TextView) getActivity().findViewById(R.id.favouriteRestaurantRating)).setText("N/A");
-            }
-    }
 
     public void checkEmptyList()
     {
